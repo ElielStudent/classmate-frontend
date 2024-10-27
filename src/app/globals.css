@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --primary: #0066cc;
+  --secondary: #4caf50;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --primary: #4da6ff;
+    --secondary: #7ae582;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+}
+
+/* Additional utility classes */
+@layer utilities {
+  .text-primary {
+    color: var(--primary);
+  }
+  .text-secondary {
+    color: var(--secondary);
+  }
+  .bg-primary {
+    background-color: var(--primary);
+  }
+  .bg-secondary {
+    background-color: var(--secondary);
+  }
+}
+
+/* Responsive typography */
+@layer base {
+  html {
+    font-size: 14px;
+  }
+  @screen sm {
+    html {
+      font-size: 16px;
+    }
+  }
+  @screen lg {
+    html {
+      font-size: 18px;
+    }
+  }
+}
+
+/* Add any other global styles here */
