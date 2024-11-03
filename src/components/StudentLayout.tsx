@@ -1,6 +1,7 @@
-import React, { ReactNode, useState, useEffect } from 'react';
+import React, { ReactNode, useState } from 'react';
 import Link from 'next/link';
-import { HomeIcon, CalendarIcon, ClockIcon, MoonIcon, SunIcon } from '@heroicons/react/24/outline';
+import { HomeIcon, CalendarIcon, ClockIcon } from '@heroicons/react/24/outline';
+import DarkModeToggle from './DarkModeToggle';
 
 type SidebarItem = {
   name: string;
@@ -20,15 +21,6 @@ type StudentLayoutProps = {
 
 export default function StudentLayout({ children }: StudentLayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
-
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [darkMode]);
 
   const Header = () => (
     <header className="bg-green-300 dark:bg-gray-800 shadow-sm sticky top-0 z-30">
@@ -42,15 +34,6 @@ export default function StudentLayout({ children }: StudentLayoutProps) {
         <DarkModeToggle />
       </div>
     </header>
-  );
-
-  const DarkModeToggle = () => (
-    <button
-      onClick={() => setDarkMode(!darkMode)}
-      className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600"
-    >
-      {darkMode ? <SunIcon className="h-5 w-5" /> : <MoonIcon className="h-5 w-5" />}
-    </button>
   );
 
   const Sidebar = () => (
